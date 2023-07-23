@@ -4,7 +4,23 @@
     <div class="container">
         {% verbatim %}
         <div id="app">
-            Your lucky message is: {{ message }}
+            <div class="row">
+                <div class="col-sm-6 mb-3 mb-sm-0">
+                    <div class="card">
+                      <div class="row card-body">
+                          <div class="col-sm-6">
+                            <h1 class="card-title">{{ selectedRikishi.shikonaEn }}</h1>
+                            <p class="card-text">{{ selectedRikishi.stable }}</p>
+                            <a href="#" class="btn btn-primary">Full record</a>
+                          </div>
+                          <img
+                            src="http://sumodb.sumogames.de/pics/11728.jpg"
+                            class="col-sm-6"
+                            alt="..."
+                          >
+                    </div>
+                </div>
+              </div>
         </div>
         {% endverbatim %}
     </div>
@@ -12,13 +28,22 @@
 
 {% block javascripts %}
     <script>
-        const { createApp, ref } = Vue
+        const { createApp, computed } = Vue
 
         createApp({
-            setup() {
-                const message = ref('Hello vue!')
+            data() {
+                const selectedRikishi = {
+                    shikonaEn: "Takarafuji",
+                    stable: "Isegahama",
+                    sumoDbId: 11728
+                }
                 return {
-                    message
+                    selectedRikishi
+                }
+            },
+            computed: {
+                imageLink() {
+                    return "http://sumodb.sumogames.de/pics/$(this.selectedRikishi.sumoDbId).jpg"
                 }
             }
         }).mount('#app')
