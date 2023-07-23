@@ -8,7 +8,10 @@
                 <div class="col-sm-6 mb-3 mb-sm-0">
                     <wrestler></wrestler>
                 </div>
-              </div>
+            </div>
+            <div class="row">
+                <head2head v-for="wrestler in wrestlers"></head2head>
+            </div>
         </div>
         {% endverbatim %}
     </div>
@@ -18,10 +21,32 @@
     <script type="module">
         import { createApp } from 'vue'
         import wrestler from "{{ asset('../assets/wrestler.js') }}"
+        import head2head from "{{ asset('../assets/head2head.js') }}"
 
         const app = createApp({
+            data() {
+                return {
+                    wrestlers: [
+                        {
+                            shikonaEn: 'Daieisho',
+                            stable: 'Oitekaze',
+                            currentRank: 'Sekiwake',
+                            wins: '13',
+                            losses: '8',
+                        },
+                        {
+                            shikonaEn: 'Daieisho',
+                            stable: 'Oitekaze',
+                            currentRank: 'Sekiwake',
+                            wins: '13',
+                            losses: '8',
+                        }
+                    ]
+                }
+            },
         })
         app.component('wrestler', wrestler)
+        app.component('head2head', head2head)
         app.mount('#app')
     </script>
 {% endblock %}
