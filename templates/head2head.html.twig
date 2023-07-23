@@ -1,11 +1,13 @@
 {%  include 'base.html.twig' %}
 
 {% block body %}
-    {% verbatim %}
-    <div id="app">
-        Your lucky message is: {{ message }}
+    <div class="container">
+        {% verbatim %}
+        <div id="app">
+            Your lucky message is: {{ message }}
+        </div>
+        {% endverbatim %}
     </div>
-    {% endverbatim %}
 {%  endblock %}
 
 {% block javascripts %}
