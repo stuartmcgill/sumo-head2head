@@ -6,6 +6,7 @@
         <div id="app">
             <div class="row">
                 <div class="col-sm-6 mb-3 mb-sm-0">
+                <wrestler></wrestler>
                     <div class="card">
                       <div class="row card-body">
                           <div class="col-sm-6">
@@ -29,8 +30,9 @@
 {% block javascripts %}
     <script type="module">
         import { createApp } from 'vue'
+        import wrestler from "{{ asset('../assets/wrestler.js') }}"
 
-        createApp({
+        const app = createApp({
             data() {
                 const selectedRikishi = {
                     shikonaEn: "Takarafuji",
@@ -46,6 +48,8 @@
                     return "http://sumodb.sumogames.de/pics/$(this.selectedRikishi.sumoDbId).jpg"
                 }
             }
-        }).mount('#app')
+        })
+        app.component('wrestler', wrestler)
+        app.mount('#app')
     </script>
 {% endblock %}
