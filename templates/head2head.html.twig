@@ -1,5 +1,24 @@
 {%  include 'base.html.twig' %}
 
 {% block body %}
-<h1>Your lucky number is {{ number }}</h1>
+    {% verbatim %}
+    <div id="app">
+        Your lucky message is: {{ message }}
+    </div>
+    {% endverbatim %}
 {%  endblock %}
+
+{% block javascripts %}
+    <script>
+        const { createApp, ref } = Vue
+
+        createApp({
+            setup() {
+                const message = ref('Hello vue!')
+                return {
+                    message
+                }
+            }
+        }).mount('#app')
+    </script>
+{% endblock %}
