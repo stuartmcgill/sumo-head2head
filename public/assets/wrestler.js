@@ -21,7 +21,7 @@ export default {
         <a href="#" class="btn btn-primary">Full record</a>
       </div>
       <img
-        src="http://sumodb.sumogames.de/pics/11728.jpg"
+        src="{{ imageLink }}"
         class="col-sm-6"
         alt="..."
       >
