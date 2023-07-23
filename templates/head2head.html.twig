@@ -27,8 +27,8 @@
 {%  endblock %}
 
 {% block javascripts %}
-    <script>
-        const { createApp, computed } = Vue
+    <script type="module">
+        import { createApp } from 'vue'
 
         createApp({
             data() {
