@@ -31,11 +31,11 @@ export default {
     },
     template:
         `
-<div class="card col-sm-2" :class="textBgClass" >
-    <div class="card-header">{{ shikonaEn }}</div>
-    <div class="card-body">
-        <h5 class="card-title">{{ wins }}-{{ losses }}</h5>
-        <a href="#" class="btn btn-primary">Select</a>
+<div class="card col-sm-2" :class="borderClass">
+    <h3 class="card-header">{{ shikonaEn }}</h3>
+    <div class="card-body" :class="textClass">
+        <h2 class="card-title">{{ wins }}-{{ losses }}</h2>
+        <a href="#" class="btn btn-outline-primary">Select</a>
     </div>
 </div>
 `
