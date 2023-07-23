@@ -5,27 +5,37 @@ export default {
         }
     },
     computed: {
-        borderClass() {
+        colour() {
             if (this.wins === 0 && this.losses === 0) {
-                return 'border-secondary'
+                return 'info'
             }
             if (this.wins === this.losses) {
-                return 'border-primary'
+                return 'primary'
             }
             if (this.wins > this.losses) {
-                return 'border-success'
+                return 'success'
             }
 
-            return 'border-danger'
+            return 'danger'
+        },
+        borderClass() {
+            return 'border-' + this.colour;
+        },
+        textClass() {
+            return 'text-' + this.colour;
+        }
+        ,
+        textBgClass() {
+            return 'text-bg-' + this.colour;
         }
     },
     template:
         `
-<div class="card col-sm-2" :class="borderClass" >
+<div class="card col-sm-2" :class="textBgClass" >
     <div class="card-header">{{ shikonaEn }}</div>
     <div class="card-body">
         <h5 class="card-title">{{ wins }}-{{ losses }}</h5>
-        <a href="#" class="btn btn-primary">{{ shikonaEn }} head-to-heads</a>
+        <a href="#" class="btn btn-primary">Select</a>
     </div>
 </div>
 `
