@@ -8,7 +8,7 @@ export default {
     },
     computed: {
         imageLink() {
-            return "http://sumodb.sumogames.de/pics/$(sumoDbId).jpg"
+            return 'http://sumodb.sumogames.de/pics/' + this.sumoDbId + '.jpg'
         }
     },
     template:
@@ -21,7 +21,7 @@ export default {
         <a href="#" class="btn btn-primary">Full record</a>
       </div>
       <img
-        src="{{ imageLink }}"
+        :src="imageLink"
         class="col-sm-6"
         alt="..."
       >
