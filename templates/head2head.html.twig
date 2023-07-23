@@ -10,7 +10,13 @@
                 </div>
             </div>
             <div class="row">
-                <head2head v-for="wrestler in wrestlers"></head2head>
+                <head2head v-for="wrestler in wrestlers"
+                    :shikona-en="wrestler.shikonaEn"
+                    :sumo-db-id="wrestler.sumoDbId"
+                    :stable="wrestler.stable"
+                    :current-rank="wrestler.currentRank"
+                    :wins="wrestler.wins"
+                    :losses="wrestler.losses"></head2head>
             </div>
         </div>
         {% endverbatim %}
@@ -29,17 +35,19 @@
                     wrestlers: [
                         {
                             shikonaEn: 'Daieisho',
+                            sumoDbId: 12345,
                             stable: 'Oitekaze',
                             currentRank: 'Sekiwake',
-                            wins: '13',
-                            losses: '8',
+                            wins: 13,
+                            losses: 8,
                         },
                         {
-                            shikonaEn: 'Daieisho',
+                            shikonaEn: 'Terunofuji',
+                            sumoDbId: 12345,
                             stable: 'Oitekaze',
                             currentRank: 'Sekiwake',
-                            wins: '13',
-                            losses: '8',
+                            wins: 0,
+                            losses: 0,
                         }
                     ]
                 }

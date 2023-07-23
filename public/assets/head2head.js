@@ -1,11 +1,7 @@
 export default {
-    data() {
+    props: ['shikonaEn', 'sumoDbId', 'stable', 'currentRank', 'wins', 'losses'],
+    data(props) {
         return {
-            shikonaEn: 'Daieisho',
-            stable: 'Oitekaze',
-            currentRank: 'Sekiwake',
-            wins: 13,
-            losses: 8,
         }
     },
     computed: {
