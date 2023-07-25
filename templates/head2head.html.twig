@@ -6,14 +6,14 @@
         <div id="app">
             <div class="row">
                 <div class="col-sm-6 mb-3 mb-sm-0">
-                    <wrestler></wrestler>
+                    <wrestler :selected="selected"></wrestler>
                 </div>
             </div>
             <div class="row">
                 <head2head v-for="wrestler in wrestlers"
                     :shikona-en="wrestler.shikonaEn"
                     :sumo-db-id="wrestler.sumoDbId"
-                    :stable="wrestler.stable"
+                    :heya="wrestler.heya"
                     :current-rank="wrestler.currentRank"
                     :wins="wrestler.wins"
                     :losses="wrestler.losses"></head2head>
@@ -32,11 +32,13 @@
         const app = createApp({
             data() {
                 return {
-                    wrestlers: []
+                    wrestlers: [],
+                    selected: ''
                 }
             },
             mounted() {
                 this.wrestlers = JSON.parse(document.getElementById('wrestlers').dataset.wrestlers);
+                this.selected = this.wrestlers[0]
             }
 
         })

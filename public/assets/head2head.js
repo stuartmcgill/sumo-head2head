@@ -1,5 +1,5 @@
 export default {
-    props: ['shikonaEn', 'sumoDbId', 'stable', 'currentRank', 'wins', 'losses'],
+    props: ['shikonaEn', 'sumoDbId', 'heya', 'currentRank', 'wins', 'losses'],
     data(props) {
         return {
         }
