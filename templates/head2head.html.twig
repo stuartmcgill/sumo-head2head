@@ -1,7 +1,7 @@
 {%  include 'base.html.twig' %}
 
 {% block body %}
-    <div class="container" data-wrestlers="{{ wrestlers }}">
+    <div class="container" id="wrestlers" data-wrestlers="{{ wrestlers }}">
         {% verbatim %}
         <div id="app">
             <div class="row">
@@ -32,26 +32,13 @@
         const app = createApp({
             data() {
                 return {
-                    wrestlers: [
-                        {
-                            shikonaEn: 'Daieisho',
-                            sumoDbId: 12345,
-                            stable: 'Oitekaze',
-                            currentRank: 'Sekiwake',
-                            wins: 1,
-                            losses: 1,
-                        },
-                        {
-                            shikonaEn: 'Terunofuji',
-                            sumoDbId: 12345,
-                            stable: 'Oitekaze',
-                            currentRank: 'Sekiwake',
-                            wins: 0,
-                            losses: 0,
-                        }
-                    ]
+                    wrestlers: []
                 }
             },
+            mounted() {
+                this.wrestlers = JSON.parse(document.getElementById('wrestlers').dataset.wrestlers);
+            }
+
         })
         app.component('wrestler', wrestler)
         app.component('head2head', head2head)
