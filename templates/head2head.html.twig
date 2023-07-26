@@ -11,6 +11,7 @@
             </div>
             <div class="row">
                 <head2head v-for="wrestler in wrestlers"
+                    @selected="onHead2HeadSelected"
                     :shikona-en="wrestler.shikonaEn"
                     :sumo-db-id="wrestler.sumoDbId"
                     :heya="wrestler.heya"
@@ -39,8 +40,12 @@
             mounted() {
                 this.wrestlers = JSON.parse(document.getElementById('wrestlers').dataset.wrestlers);
                 this.selected = this.wrestlers[0]
+            },
+            methods: {
+                onHead2HeadSelected(sumoDbId) {
+                    this.selected = this.wrestlers[4]
+                }
             }
-
         })
         app.component('wrestler', wrestler)
         app.component('head2head', head2head)

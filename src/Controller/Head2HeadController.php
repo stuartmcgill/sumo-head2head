@@ -12,7 +12,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class Head2HeadController extends AbstractController
 {
     #[Route('head2head')]
-    public function number(): Response
+    public function view(): Response
     {
         $filename = __DIR__ . '/../../data/wrestlers.json';
 

@@ -35,7 +35,7 @@ export default {
     <h3 class="card-header">{{ shikonaEn }}</h3>
     <div class="card-body" :class="textClass">
         <h2 class="card-title">{{ wins }}-{{ losses }}</h2>
-        <a href="#" class="btn btn-outline-primary">Select</a>
+        <a href="#" @click="$emit('selected', sumoDbId)" class="btn btn-outline-primary">Select</a>
     </div>
 </div>
 `
