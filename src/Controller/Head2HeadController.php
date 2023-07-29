@@ -9,6 +9,7 @@ use StuartMcGill\SumoApiPhp\Factory\RikishiFactory;
 use StuartMcGill\SumoApiPhp\Model\Rikishi;
 use StuartMcGill\SumoApiPhp\Service\RikishiService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -22,7 +23,7 @@ class Head2HeadController extends AbstractController
         ]);
     }
 
-    #[Route('head2head/rikishi/{id}')]
+    #[Route('head2head/{id}')]
     public function head2headsForWrestler(int $id): Response
     {
         $wrestlers = $this->getMakuuchiWrestlers();
@@ -41,10 +42,7 @@ class Head2HeadController extends AbstractController
             file_put_contents(filename: $filename, data: $head2heads);
         }
 
-        return $this->render('head2head.html.twig', [
-            'head2heads' => $head2heads,
-            'wrestlers' => json_encode($wrestlers),
-        ]);
+        return new JsonResponse($head2heads);
     }
 
     /** @return list<Rikishi> */

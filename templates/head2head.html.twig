@@ -45,30 +45,39 @@
                 this.selected = this.wrestlers[0]
             },
             methods: {
-                onHead2HeadSelected(id) {
-                    // Call API
+                async onHead2HeadSelected(id) {
                     // Set wins and losses on wrestlers according to ids returned from API
+                    const response = await fetch('/head2head/' + id)
+                    const json = await response.json()
+                    console.log(json)
+                    const head2heads = JSON.parse(json)
+
+                    this.wrestlers.forEach((wrestler, index) => {
+                        const relevantMatchup = head2heads.matchups.filter(
+                            (matchup) => matchup.opponentId === wrestler.id
+                        )[0]
+
+                        this.wrestlers[index].wins = relevantMatchup.rikishiWins
+                        this.wrestlers[index].losses = relevantMatchup.opponentWins
+                        this.wrestlers[index].winningPercentage = relevantMatchup.winningPercentage
+                    });
+
                     // Sort array according to wins and losses
                     function compareHead2Heads(head2headA, head2headB) {
-                        if (head2headA.wins < head2headB.wins) {
+                        if (head2headA.winningPercentage < head2headB.winningPercentage) {
                             return 1;
                         }
-                        if (head2headA.wins > head2headB.wins) {
+                        if (head2headA.winningPercentage > head2headB.winningPercentage) {
                             return -1;
                         }
 
                         return 0;
                     }
 
-                    this.wrestlers.forEach(function(wrestler) {
-                        wrestler.wins = Math.round(Math.random()*15)
-                        wrestler.losses = 15 - wrestler.wins
-                        wrestler.winningPercentage = wrestler.wins / (wrestler.wins + wrestler.losses)  * 100
-                    })
-
                     this.wrestlers.sort(compareHead2Heads)
 
-                    this.selected = this.wrestlers[4]
+                    // Update the selected wrestler
+                    this.selected = this.wrestlers.filter((wrestler) => wrestler.id === id)[0]
                 }
             }
         })
