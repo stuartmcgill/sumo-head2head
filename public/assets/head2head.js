@@ -27,11 +27,14 @@ export default {
         ,
         textBgClass() {
             return 'text-bg-' + this.colour;
+        },
+        isVisible() {
+            return this.id !== this.$parent.selected.id
         }
     },
     template:
         `
-<div class="card col-sm-2" :class="borderClass">
+<div class="card col-sm-2" :class="borderClass" v-show="isVisible">
     <h5 class="card-header">{{ shikonaEn }}</h5>
     <div class="card-body" :class="textClass">
         <h3 class="card-title">{{ wins }}-{{ losses }}</h3>

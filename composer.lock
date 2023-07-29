@@ -2543,12 +2543,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/stuartmcgill/sumoapi-php.git",
-                "reference": "029f1386fbfc100d9843707b8a0cd128b017d0a1"
+                "reference": "1d855846ad5660a979ebcf0d0854e2f42868a70d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/stuartmcgill/sumoapi-php/zipball/029f1386fbfc100d9843707b8a0cd128b017d0a1",
-                "reference": "029f1386fbfc100d9843707b8a0cd128b017d0a1",
+                "url": "https://api.github.com/repos/stuartmcgill/sumoapi-php/zipball/1d855846ad5660a979ebcf0d0854e2f42868a70d",
+                "reference": "1d855846ad5660a979ebcf0d0854e2f42868a70d",
                 "shasum": ""
             },
             "require": {
@@ -2582,7 +2582,7 @@
                 "issues": "https://github.com/stuartmcgill/sumoapi-php/issues",
                 "source": "https://github.com/stuartmcgill/sumoapi-php/tree/add-head2heads"
             },
-            "time": "2023-07-29T08:25:28+00:00"
+            "time": "2023-07-29T08:34:01+00:00"
         },
         {
             "name": "symfony/asset",

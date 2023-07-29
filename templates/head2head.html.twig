@@ -63,15 +63,19 @@
                     });
 
                     // Sort array according to wins and losses
-                    function compareHead2Heads(head2headA, head2headB) {
-                        if (head2headA.winningPercentage < head2headB.winningPercentage) {
-                            return 1;
+                    function compareHead2Heads(a, b) {
+                        if (a.winningPercentage < b.winningPercentage) {
+                            return 1
                         }
-                        if (head2headA.winningPercentage > head2headB.winningPercentage) {
-                            return -1;
+                        if (a.winningPercentage > b.winningPercentage) {
+                            return -1
                         }
 
-                        return 0;
+                        if (a.winningPercentage !== b.winningPercentage) {
+                            return a.winningPercentage === null ? 1 : -1
+                        }
+
+                        return a.shikonaEn > b.shikonaEn ? 1 : -1
                     }
 
                     this.wrestlers.sort(compareHead2Heads)
