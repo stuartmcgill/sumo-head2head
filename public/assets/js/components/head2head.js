@@ -119,7 +119,7 @@ export default {
             :title="head2head.shikonaEn"
             :data-bs-content="detailsText">
                 Details
-        </a>        
+        </a>
     </div>
 </div>
 `

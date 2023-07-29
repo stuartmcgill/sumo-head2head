@@ -4,7 +4,7 @@
     <div class="container" id="wrestlers" data-wrestlers="{{ wrestlers }}">
         <div class="h-100 p-5 m-3 text-bg-dark rounded-3">
             <h2>Makuuchi head-to-heads</h2>
-            <p class="lead">Select a wrestler to see how well they do against others in the division
+            <p class="lead">Select a wrestler to see how well he does against others in the same division
                 <a class="header-link" href="https://sumo-api.com" target="_blank">Data from Sumo API</a>
             </p>
         </div>
@@ -13,6 +13,9 @@
             <div class="row">
                 <div class="col-sm-6 mb-3 mb-sm-0">
                     <selected-wrestler :selected="selected"></selected-wrestler>
+                </div>
+                <div v-show="loading" class="spinner-border m-3" role="status">
+                    <span class="sr-only"></span>
                 </div>
             </div>
             <div class="row">
@@ -38,7 +41,8 @@
             data() {
                 return {
                     wrestlers: [],
-                    selected: ''
+                    selected: '',
+                    loading: false
                 }
             },
             mounted() {
@@ -48,12 +52,18 @@
             },
             methods: {
                 async onHead2HeadSelected(id) {
-                    const response = await fetch('/head2head/' + id)
-                    const json = await response.json()
+                    this.loading = true
 
-                    this.wrestlers.refreshHead2HeadData(JSON.parse(json))
-                    this.wrestlers.sort()
-                    this.selected = this.wrestlers.find(id)
+                    try {
+                        const response = await fetch('/head2head/' + id)
+                        const json = await response.json()
+
+                        this.wrestlers.refreshHead2HeadData(JSON.parse(json))
+                        this.wrestlers.sort()
+                        this.selected = this.wrestlers.find(id)
+                    } finally {
+                        this.loading = false
+                    }
                 }
             }
         })
