@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9ec08f699f534e533649d100d2f5d1eb",
+    "content-hash": "3c5a044ee233fd309e1da6187dae2505",
     "packages": [
         {
             "name": "doctrine/cache",
@@ -2539,16 +2539,16 @@
         },
         {
             "name": "stuartmcgill/sumoapi-php",
-            "version": "dev-add-head2heads",
+            "version": "0.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/stuartmcgill/sumoapi-php.git",
-                "reference": "1d855846ad5660a979ebcf0d0854e2f42868a70d"
+                "reference": "c8f72b05569479156033b81398ec3a1a4a2e1edc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/stuartmcgill/sumoapi-php/zipball/1d855846ad5660a979ebcf0d0854e2f42868a70d",
-                "reference": "1d855846ad5660a979ebcf0d0854e2f42868a70d",
+                "url": "https://api.github.com/repos/stuartmcgill/sumoapi-php/zipball/c8f72b05569479156033b81398ec3a1a4a2e1edc",
+                "reference": "c8f72b05569479156033b81398ec3a1a4a2e1edc",
                 "shasum": ""
             },
             "require": {
@@ -2580,9 +2580,9 @@
             "description": "A PHP wrapper for https://sumo-api.com/",
             "support": {
                 "issues": "https://github.com/stuartmcgill/sumoapi-php/issues",
-                "source": "https://github.com/stuartmcgill/sumoapi-php/tree/add-head2heads"
+                "source": "https://github.com/stuartmcgill/sumoapi-php/tree/0.5.0"
             },
-            "time": "2023-07-29T08:34:01+00:00"
+            "time": "2023-07-29T11:18:39+00:00"
         },
         {
             "name": "symfony/asset",
@@ -10049,9 +10049,7 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "stuartmcgill/sumoapi-php": 20
-    },
+    "stability-flags": [],
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
