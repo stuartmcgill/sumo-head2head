@@ -20,4 +20,15 @@ export default class Head2HeadCollection {
 
         this.head2heads.sort(compareHead2Heads)
     }
+    refreshHead2HeadData(head2heads) {
+        this.head2heads.forEach((wrestler, index) => {
+            const relevantMatchup = head2heads.matchups.filter(
+                (matchup) => matchup.opponentId === wrestler.id
+            )[0]
+
+            this.head2heads[index].wins = relevantMatchup.rikishiWins
+            this.head2heads[index].losses = relevantMatchup.opponentWins
+            this.head2heads[index].winningPercentage = relevantMatchup.winningPercentage
+        });
+    }
 }

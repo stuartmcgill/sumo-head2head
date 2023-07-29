@@ -16,9 +16,9 @@
                 </div>
             </div>
             <div class="row">
-                <head2head v-for="wrestler in wrestlers"
+                <head2head v-for="head2head in wrestlers.head2heads"
                     @selected="onHead2HeadSelected"
-                    :head2head="wrestler"
+                    :head2head="head2head"
                     :selected-wrestler="selected"
                     ></head2head>
             </div>
@@ -42,10 +42,9 @@
                 }
             },
             mounted() {
-                this.wrestlers = JSON.parse(document.getElementById('wrestlers').dataset.wrestlers);
-
-                const head2headCollection = new Head2HeadCollection(this.wrestlers);
-                head2headCollection.sort()
+                this.wrestlers = new Head2HeadCollection(
+                    JSON.parse(document.getElementById('wrestlers').dataset.wrestlers)
+                );
             },
             methods: {
                 async onHead2HeadSelected(id) {
@@ -54,36 +53,11 @@
                     const json = await response.json()
                     const head2heads = JSON.parse(json)
 
-                    this.wrestlers.forEach((wrestler, index) => {
-                        const relevantMatchup = head2heads.matchups.filter(
-                            (matchup) => matchup.opponentId === wrestler.id
-                        )[0]
-
-                        this.wrestlers[index].wins = relevantMatchup.rikishiWins
-                        this.wrestlers[index].losses = relevantMatchup.opponentWins
-                        this.wrestlers[index].winningPercentage = relevantMatchup.winningPercentage
-                    });
-
-                    // Sort array according to wins and losses
-                    function compareHead2Heads(a, b) {
-                        if (a.winningPercentage < b.winningPercentage) {
-                            return 1
-                        }
-                        if (a.winningPercentage > b.winningPercentage) {
-                            return -1
-                        }
-
-                        if (a.winningPercentage !== b.winningPercentage) {
-                            return a.winningPercentage === null ? 1 : -1
-                        }
-
-                        return a.shikonaEn > b.shikonaEn ? 1 : -1
-                    }
-
-                    this.wrestlers.sort(compareHead2Heads)
+                    this.wrestlers.refreshHead2HeadData(head2heads)
+                    this.wrestlers.sort()
 
                     // Update the selected wrestler
-                    this.selected = this.wrestlers.filter((wrestler) => wrestler.id === id)[0]
+                    this.selected = this.wrestlers.head2heads.filter((wrestler) => wrestler.id === id)[0]
                 }
             }
         })
