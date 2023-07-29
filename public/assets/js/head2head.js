@@ -1,28 +1,28 @@
 export default {
-    props: ['id', 'shikonaEn', 'sumoDbId', 'heya', 'currentRank', 'wins', 'losses', 'winningPercentage', 'selectedWrestler'],
+    props: ['head2head', 'selectedWrestler'],
     data(props) {
         return {
         }
     },
     computed: {
         record() {
-            if (isNaN(this.wins)) {
+            if (isNaN(this.head2head.wins)) {
                 return ''
             }
 
-            return this.wins + '-' + this.losses
+            return this.head2head.wins + '-' + this.head2head.losses
         },
         colour() {
-            if (this.heya === this.selectedWrestler.heya) {
+            if (this.head2head.heya === this.selectedWrestler.heya) {
                 return 'secondary'
             }
-            if (this.wins === 0 && this.losses === 0) {
+            if (this.head2head.wins === 0 && this.head2head.losses === 0) {
                 return 'info'
             }
-            if (this.wins === this.losses) {
+            if (this.head2head.wins === this.head2head.losses) {
                 return 'primary'
             }
-            if (this.winningPercentage > 50) {
+            if (this.head2head.winningPercentage > 50) {
                 return 'success'
             }
 
@@ -49,10 +49,10 @@ export default {
     template:
         `
 <div class="card col-sm-2 m-1" :class="borderClass" v-show="isVisible">
-    <h5 class="card-header">{{ shikonaEn }}</h5>
+    <h5 class="card-header">{{ head2head.shikonaEn }}</h5>
     <div class="card-body" :class="textClass">
         <h3 class="card-title">{{ record }}</h3>
-        <a href="#" @click="$emit('selected', id)" class="btn btn-outline-primary">Select</a>
+        <a href="#" @click="$emit('selected', head2head.id)" class="btn btn-outline-primary">Select</a>
     </div>
 </div>
 `

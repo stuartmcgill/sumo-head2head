@@ -18,14 +18,7 @@
             <div class="row">
                 <head2head v-for="wrestler in wrestlers"
                     @selected="onHead2HeadSelected"
-                    :id="wrestler.id"
-                    :shikona-en="wrestler.shikonaEn"
-                    :sumo-db-id="wrestler.sumoDbId"
-                    :heya="wrestler.heya"
-                    :current-rank="wrestler.currentRank"
-                    :wins="wrestler.wins"
-                    :losses="wrestler.losses"
-                    :winning-percentage="wrestler.winningPercentage"
+                    :head2head="wrestler"
                     :selected-wrestler="selected"
                     ></head2head>
             </div>
