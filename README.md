@@ -19,4 +19,4 @@ sourced via REST APIs from https://sumo-api.com/.
 
 # Preview
 
-![Screenshot](https://github.com/stuartmcgill/sumo-head2head/blob/main/screenshots/demo.jpg)
+![Screenshot](https://github.com/stuartmcgill/sumo-head2head/blob/main/screenshots/demo.png)
