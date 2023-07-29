@@ -18,7 +18,9 @@ export default {
   <div class="row card-body">
       <div class="col-sm-6">
         <h1 class="card-title">{{ selected.shikonaEn }}</h1>
-        <p class="card-text">{{ selected.heya }} stable</p>
+        <p class="card-text">
+            {{ selected.currentRank }} ({{ selected.heya }} stable)
+        </p>
         <a :href="recordLink" class="btn btn-primary">Full record</a>
       </div>
       <img

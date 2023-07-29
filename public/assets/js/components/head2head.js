@@ -9,7 +9,7 @@ export default {
         this.enablePopovers()
     },
     watch: {
-        selectedWrestler: async function(newVal, oldVal) {
+        async selectedWrestler (newVal, oldVal) {
             this.forceRender()
         }
     },
@@ -21,16 +21,12 @@ export default {
             })
         },
         async forceRender() {
-            // Remove MyComponent from the DOM
             this.renderPopover = false;
-
-            // Then, wait for the change to get flushed to the DOM
             await this.$nextTick();
 
-            // Add MyComponent back in
             this.renderPopover = true;
-
             await this.$nextTick();
+
             this.enablePopovers()
         }
     },
@@ -88,6 +84,20 @@ export default {
             }
 
             return this.head2head.id !== this.selectedWrestler.id
+        },
+        detailsText() {
+            let text = '<div>' + this.head2head.shikonaJp + '</div>'
+                + '<div>Rank: ' + this.head2head.currentRank + '</div>'
+                + '<div>Stable: ' + this.head2head.heya + '</div>'
+                + '<div>Height: ' + this.head2head.height + 'cm</div>'
+                + '<div>Weight: ' + this.head2head.weight + 'kg</div>'
+
+            if (this.selectedWrestler && (this.head2head.wins + this.head2head.losses > 0)) {
+                text += '<div><a target="_blank" href="http://sumodb.sumogames.de/Rikishi_opp.aspx?r='
+                    + this.selectedWrestler.sumoDbId + '#' + this.head2head.sumoDbId + '">Head-to-head details</a></div>'
+            }
+
+            return text
         }
     },
     template:
@@ -104,8 +114,9 @@ export default {
             role="button"
             data-bs-toggle="popover"
             data-bs-trigger="focus"
+            data-bs-html="true"
             :title="head2head.shikonaEn"
-            data-bs-content="And here's some amazing content. It's very engaging. Right?">
+            :data-bs-content="detailsText">
                 Details
         </a>        
     </div>
