@@ -12,7 +12,7 @@
         <div id="app">
             <div class="row">
                 <div class="col-sm-6 mb-3 mb-sm-0">
-                    <wrestler :selected="selected"></wrestler>
+                    <selected-wrestler :selected="selected"></selected-wrestler>
                 </div>
             </div>
             <div class="row">
@@ -90,7 +90,7 @@
                 }
             }
         })
-        app.component('wrestler', selectedWrestler)
+        app.component('selectedWrestler', selectedWrestler)
         app.component('head2head', head2head)
         app.mount('#app')
     </script>
