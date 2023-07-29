@@ -14,7 +14,7 @@ export default {
     },
     template:
         `
-<div class="card">
+<div class="card m-3" v-show="selected">
   <div class="row card-body">
       <div class="col-sm-6">
         <h1 class="card-title">{{ selected.shikonaEn }}</h1>

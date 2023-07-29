@@ -66,6 +66,13 @@ class Head2HeadController extends AbstractController
             $rikishiService = RikishiService::factory();
             $wrestlers = $rikishiService->fetchDivision('Makuuchi');
 
+            usort(
+                array: $wrestlers,
+                callback: static function (Rikishi $a, Rikishi $b) {
+                    return $a->shikonaEn <=> $b->shikonaEn;
+                },
+            );
+
             // Save for now
             $wrestlersJson = json_encode($wrestlers);
             file_put_contents(filename: $filename, data: $wrestlersJson);

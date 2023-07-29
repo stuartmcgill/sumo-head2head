@@ -2,8 +2,9 @@
 
 {% block body %}
     <div class="container" id="wrestlers" data-wrestlers="{{ wrestlers }}">
-        <div class="h-100 p-5 text-bg-dark rounded-3">
-            <h2>Makuuchi division head-to-heads</h2>
+        <div class="h-100 p-5 m-3 text-bg-dark rounded-3">
+            <h2>Makuuchi head-to-heads</h2>
+            <p class="lead">Select a wrestler to see how well they do against others in the division</p>
         </div>
         {% verbatim %}
         <div id="app">
@@ -45,7 +46,6 @@
             },
             mounted() {
                 this.wrestlers = JSON.parse(document.getElementById('wrestlers').dataset.wrestlers);
-                this.selected = this.wrestlers[0]
             },
             methods: {
                 async onHead2HeadSelected(id) {
