@@ -1,5 +1,5 @@
 export default {
-    props: ['id', 'shikonaEn', 'sumoDbId', 'heya', 'currentRank', 'wins', 'losses', 'winningPercentage'],
+    props: ['id', 'shikonaEn', 'sumoDbId', 'heya', 'currentRank', 'wins', 'losses', 'winningPercentage', 'selectedwrestler'],
     data(props) {
         return {
         }
@@ -40,7 +40,7 @@ export default {
         },
         isVisible() {
             // How to make dynamic state available to children? Can you do this through props as well?
-            return this.id !== this.$parent.selected.id
+            return this.selectedwrestler ? this.id !== this.selectedwrestler.id : true
         }
     },
     template:

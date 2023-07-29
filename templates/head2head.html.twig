@@ -26,6 +26,7 @@
                     :wins="wrestler.wins"
                     :losses="wrestler.losses"
                     :winning-percentage="wrestler.winningPercentage"
+                    :selectedwrestler="selected"
                     ></head2head>
             </div>
         </div>
@@ -54,7 +55,6 @@
                     // Set wins and losses on wrestlers according to ids returned from API
                     const response = await fetch('/head2head/' + id)
                     const json = await response.json()
-                    console.log(json)
                     const head2heads = JSON.parse(json)
 
                     this.wrestlers.forEach((wrestler, index) => {
