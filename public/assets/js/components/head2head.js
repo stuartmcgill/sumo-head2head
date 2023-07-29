@@ -114,6 +114,7 @@ export default {
             role="button"
             data-bs-toggle="popover"
             data-bs-trigger="focus"
+            data-bs-placement="right"
             data-bs-html="true"
             :title="head2head.shikonaEn"
             :data-bs-content="detailsText">

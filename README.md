@@ -16,3 +16,7 @@ division.
 _Sumo head-to-head_ is a [Symfony](https://symfony.com/doc/current/setup.html) web app.
 The front-end was developed using [Vue.js](https://vuejs.org/), and the data is
 sourced via REST APIs from https://sumo-api.com/.
+
+# Preview
+
+![Screenshot](https://github.com/stuartmcgill/sumo-head2head/blob/main/screenshots/demo.jpg)
