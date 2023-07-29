@@ -1,5 +1,5 @@
 export default {
-    props: ['id', 'shikonaEn', 'sumoDbId', 'heya', 'currentRank', 'wins', 'losses', 'winningPercentage', 'selectedwrestler'],
+    props: ['id', 'shikonaEn', 'sumoDbId', 'heya', 'currentRank', 'wins', 'losses', 'winningPercentage', 'selectedWrestler'],
     data(props) {
         return {
         }
@@ -13,7 +13,7 @@ export default {
             return this.wins + '-' + this.losses
         },
         colour() {
-            if (this.heya === this.selectedwrestler.heya) {
+            if (this.heya === this.selectedWrestler.heya) {
                 return 'secondary'
             }
             if (this.wins === 0 && this.losses === 0) {
@@ -39,7 +39,11 @@ export default {
             return 'text-bg-' + this.colour;
         },
         isVisible() {
-            return this.selectedwrestler ? this.id !== this.selectedwrestler.id : true
+            if (!this.selectedWrestler) {
+                return true
+            }
+
+            return this.id !== this.selectedWrestler.id
         }
     },
     template:
