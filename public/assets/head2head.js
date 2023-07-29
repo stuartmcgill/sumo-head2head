@@ -5,7 +5,17 @@ export default {
         }
     },
     computed: {
+        record() {
+            if (isNaN(this.wins)) {
+                return ''
+            }
+
+            return this.wins + '-' + this.losses
+        },
         colour() {
+            if (this.heya === this.$parent.selected.heya) {
+                return 'secondary'
+            }
             if (this.wins === 0 && this.losses === 0) {
                 return 'info'
             }
@@ -29,6 +39,7 @@ export default {
             return 'text-bg-' + this.colour;
         },
         isVisible() {
+            // How to make dynamic state available to children? Can you do this through props as well?
             return this.id !== this.$parent.selected.id
         }
     },
@@ -37,7 +48,7 @@ export default {
 <div class="card col-sm-2" :class="borderClass" v-show="isVisible">
     <h5 class="card-header">{{ shikonaEn }}</h5>
     <div class="card-body" :class="textClass">
-        <h3 class="card-title">{{ wins }}-{{ losses }}</h3>
+        <h3 class="card-title">{{ record }}</h3>
         <a href="#" @click="$emit('selected', id)" class="btn btn-outline-primary">Select</a>
     </div>
 </div>

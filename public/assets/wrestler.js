@@ -5,6 +5,9 @@ export default {
         }
     },
     computed: {
+        recordLink() {
+            return 'http://sumodb.sumogames.de/Rikishi.aspx?r=' + this.selected.sumoDbId
+        },
         imageLink() {
             return 'http://sumodb.sumogames.de/pics/' + this.selected.sumoDbId + '.jpg'
         }
@@ -15,8 +18,8 @@ export default {
   <div class="row card-body">
       <div class="col-sm-6">
         <h1 class="card-title">{{ selected.shikonaEn }}</h1>
-        <p class="card-text">{{ selected.heya }}</p>
-        <a href="#" class="btn btn-primary">Full record</a>
+        <p class="card-text">{{ selected.heya }} stable</p>
+        <a :href="recordLink" class="btn btn-primary">Full record</a>
       </div>
       <img
         :src="imageLink"
