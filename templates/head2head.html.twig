@@ -32,6 +32,7 @@
         import { createApp } from 'vue'
         import selectedWrestler from "{{ asset('../assets/js/components/selected-wrestler.js') }}"
         import head2head from "{{ asset('../assets/js/components/head2head.js') }}"
+        import Head2HeadCollection from "{{ asset('../assets/js/head2head-collection.js') }}"
 
         const app = createApp({
             data() {
@@ -42,6 +43,9 @@
             },
             mounted() {
                 this.wrestlers = JSON.parse(document.getElementById('wrestlers').dataset.wrestlers);
+
+                const head2headCollection = new Head2HeadCollection(this.wrestlers);
+                head2headCollection.sort()
             },
             methods: {
                 async onHead2HeadSelected(id) {

@@ -43,7 +43,7 @@ export default {
                 return true
             }
 
-            return this.id !== this.selectedWrestler.id
+            return this.head2head.id !== this.selectedWrestler.id
         }
     },
     template:
