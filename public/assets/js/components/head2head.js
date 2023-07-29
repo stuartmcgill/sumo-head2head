@@ -2,6 +2,36 @@ export default {
     props: ['head2head', 'selectedWrestler'],
     data(props) {
         return {
+            renderPopover: true
+        }
+    },
+    mounted() {
+        this.enablePopovers()
+    },
+    watch: {
+        selectedWrestler: async function(newVal, oldVal) {
+            this.forceRender()
+        }
+    },
+    methods: {
+        enablePopovers() {
+            const popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
+            const popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
+                return new bootstrap.Popover(popoverTriggerEl)
+            })
+        },
+        async forceRender() {
+            // Remove MyComponent from the DOM
+            this.renderPopover = false;
+
+            // Then, wait for the change to get flushed to the DOM
+            await this.$nextTick();
+
+            // Add MyComponent back in
+            this.renderPopover = true;
+
+            await this.$nextTick();
+            this.enablePopovers()
         }
     },
     computed: {
@@ -67,6 +97,17 @@ export default {
     <div class="card-body" :class="textClass">
         <h3 class="card-title">{{ record }}<div class="winning-percentage">{{ percentage }}</div></h3>
         <a href="#" @click="$emit('selected', head2head.id)" class="btn btn-outline-primary">Select</a>
+        <a
+            v-if="renderPopover"
+            tabindex="0"
+            class="btn btn-outline-secondary m-1"
+            role="button"
+            data-bs-toggle="popover"
+            data-bs-trigger="focus"
+            :title="head2head.shikonaEn"
+            data-bs-content="And here's some amazing content. It's very engaging. Right?">
+                Details
+        </a>        
     </div>
 </div>
 `
