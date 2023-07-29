@@ -13,7 +13,7 @@ export default {
             return this.wins + '-' + this.losses
         },
         colour() {
-            if (this.heya === this.$parent.selected.heya) {
+            if (this.heya === this.selectedwrestler.heya) {
                 return 'secondary'
             }
             if (this.wins === 0 && this.losses === 0) {
@@ -39,7 +39,6 @@ export default {
             return 'text-bg-' + this.colour;
         },
         isVisible() {
-            // How to make dynamic state available to children? Can you do this through props as well?
             return this.selectedwrestler ? this.id !== this.selectedwrestler.id : true
         }
     },
