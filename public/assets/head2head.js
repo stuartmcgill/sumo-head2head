@@ -1,5 +1,5 @@
 export default {
-    props: ['shikonaEn', 'sumoDbId', 'heya', 'currentRank', 'wins', 'losses'],
+    props: ['id', 'shikonaEn', 'sumoDbId', 'heya', 'currentRank', 'wins', 'losses', 'winningPercentage'],
     data(props) {
         return {
         }
@@ -12,7 +12,7 @@ export default {
             if (this.wins === this.losses) {
                 return 'primary'
             }
-            if (this.wins > this.losses) {
+            if (this.winningPercentage > 50) {
                 return 'success'
             }
 
@@ -32,10 +32,10 @@ export default {
     template:
         `
 <div class="card col-sm-2" :class="borderClass">
-    <h3 class="card-header">{{ shikonaEn }}</h3>
+    <h5 class="card-header">{{ shikonaEn }}</h5>
     <div class="card-body" :class="textClass">
-        <h2 class="card-title">{{ wins }}-{{ losses }}</h2>
-        <a href="#" @click="$emit('selected', sumoDbId)" class="btn btn-outline-primary">Select</a>
+        <h3 class="card-title">{{ wins }}-{{ losses }}</h3>
+        <a href="#" @click="$emit('selected', id)" class="btn btn-outline-primary">Select</a>
     </div>
 </div>
 `

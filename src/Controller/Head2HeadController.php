@@ -6,7 +6,6 @@ namespace App\Controller;
 
 use stdClass;
 use StuartMcGill\SumoApiPhp\Factory\RikishiFactory;
-use StuartMcGill\SumoApiPhp\Model\Rank;
 use StuartMcGill\SumoApiPhp\Model\Rikishi;
 use StuartMcGill\SumoApiPhp\Service\RikishiService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;

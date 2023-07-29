@@ -12,12 +12,15 @@
             <div class="row">
                 <head2head v-for="wrestler in wrestlers"
                     @selected="onHead2HeadSelected"
+                    :id="wrestler.id"
                     :shikona-en="wrestler.shikonaEn"
                     :sumo-db-id="wrestler.sumoDbId"
                     :heya="wrestler.heya"
                     :current-rank="wrestler.currentRank"
                     :wins="wrestler.wins"
-                    :losses="wrestler.losses"></head2head>
+                    :losses="wrestler.losses"
+                    :winning-percentage="wrestler.winningPercentage"
+                    ></head2head>
             </div>
         </div>
         {% endverbatim %}
@@ -42,7 +45,7 @@
                 this.selected = this.wrestlers[0]
             },
             methods: {
-                onHead2HeadSelected(sumoDbId) {
+                onHead2HeadSelected(id) {
                     // Call API
                     // Set wins and losses on wrestlers according to ids returned from API
                     // Sort array according to wins and losses
@@ -59,6 +62,8 @@
 
                     this.wrestlers.forEach(function(wrestler) {
                         wrestler.wins = Math.round(Math.random()*15)
+                        wrestler.losses = 15 - wrestler.wins
+                        wrestler.winningPercentage = wrestler.wins / (wrestler.wins + wrestler.losses)  * 100
                     })
 
                     this.wrestlers.sort(compareHead2Heads)
