@@ -5,12 +5,26 @@ export default {
         }
     },
     computed: {
+        populated() {
+            return !isNaN(this.head2head.wins)
+        },
         record() {
-            if (isNaN(this.head2head.wins)) {
+            if (!this.populated) {
                 return ''
             }
 
             return this.head2head.wins + '-' + this.head2head.losses
+        },
+        percentage() {
+            if (!this.populated) {
+                return ''
+            }
+
+            if (this.head2head.winningPercentage === null) {
+                return ''
+            }
+
+            return this.head2head.winningPercentage + '%'
         },
         colour() {
             if (this.head2head.heya === this.selectedWrestler.heya) {
@@ -51,7 +65,7 @@ export default {
 <div class="card col-sm-2 m-1" :class="borderClass" v-show="isVisible">
     <h5 class="card-header">{{ head2head.shikonaEn }}</h5>
     <div class="card-body" :class="textClass">
-        <h3 class="card-title">{{ record }}</h3>
+        <h3 class="card-title">{{ record }}<div class="winning-percentage">{{ percentage }}</div></h3>
         <a href="#" @click="$emit('selected', head2head.id)" class="btn btn-outline-primary">Select</a>
     </div>
 </div>

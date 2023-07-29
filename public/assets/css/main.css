@@ -2,3 +2,8 @@
     float: right;
     text-decoration: none;
 }
+.winning-percentage {
+    float: right;
+    font-size: medium;
+    color: dimgrey;
+}
