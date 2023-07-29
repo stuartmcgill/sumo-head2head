@@ -31,4 +31,7 @@ export default class Head2HeadCollection {
             this.head2heads[index].winningPercentage = relevantMatchup.winningPercentage
         });
     }
+    find(id) {
+        return this.head2heads.filter((wrestler) => wrestler.id === id)[0]
+    }
 }

@@ -57,7 +57,7 @@
                     this.wrestlers.sort()
 
                     // Update the selected wrestler
-                    this.selected = this.wrestlers.head2heads.filter((wrestler) => wrestler.id === id)[0]
+                    this.selected = this.wrestlers.find(id)
                 }
             }
         })
