@@ -36,7 +36,7 @@
 {% block javascripts %}
     <script type="module">
         import { createApp } from 'vue'
-        import wrestler from "{{ asset('../assets/js/wrestler.js') }}"
+        import selectedWrestler from "{{ asset('../assets/js/selected-wrestler.js') }}"
         import head2head from "{{ asset('../assets/js/head2head.js') }}"
 
         const app = createApp({
@@ -90,7 +90,7 @@
                 }
             }
         })
-        app.component('wrestler', wrestler)
+        app.component('wrestler', selectedWrestler)
         app.component('head2head', head2head)
         app.mount('#app')
     </script>
