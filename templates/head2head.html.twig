@@ -30,8 +30,8 @@
 {% block javascripts %}
     <script type="module">
         import { createApp } from 'vue'
-        import selectedWrestler from "{{ asset('../assets/js/selected-wrestler.js') }}"
-        import head2head from "{{ asset('../assets/js/head2head.js') }}"
+        import selectedWrestler from "{{ asset('../assets/js/components/selected-wrestler.js') }}"
+        import head2head from "{{ asset('../assets/js/components/head2head.js') }}"
 
         const app = createApp({
             data() {
