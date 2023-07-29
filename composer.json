@@ -1,4 +1,6 @@
 {
+    "name": "stuartmcgill/sumo-head2head",
+    "description": "A web app showing head-to-head data for sumo wrestlers",
     "type": "project",
     "license": "proprietary",
     "minimum-stability": "stable",
