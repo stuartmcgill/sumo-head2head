@@ -48,15 +48,11 @@
             },
             methods: {
                 async onHead2HeadSelected(id) {
-                    // Set wins and losses on wrestlers according to ids returned from API
                     const response = await fetch('/head2head/' + id)
                     const json = await response.json()
-                    const head2heads = JSON.parse(json)
 
-                    this.wrestlers.refreshHead2HeadData(head2heads)
+                    this.wrestlers.refreshHead2HeadData(JSON.parse(json))
                     this.wrestlers.sort()
-
-                    // Update the selected wrestler
                     this.selected = this.wrestlers.find(id)
                 }
             }
