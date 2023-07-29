@@ -4,7 +4,9 @@
     <div class="container" id="wrestlers" data-wrestlers="{{ wrestlers }}">
         <div class="h-100 p-5 m-3 text-bg-dark rounded-3">
             <h2>Makuuchi head-to-heads</h2>
-            <p class="lead">Select a wrestler to see how well they do against others in the division</p>
+            <p class="lead">Select a wrestler to see how well they do against others in the division
+                <a class="header-link" href="https://sumo-api.com">Sumo API</a>
+            </p>
         </div>
         {% verbatim %}
         <div id="app">
@@ -34,8 +36,8 @@
 {% block javascripts %}
     <script type="module">
         import { createApp } from 'vue'
-        import wrestler from "{{ asset('../assets/wrestler.js') }}"
-        import head2head from "{{ asset('../assets/head2head.js') }}"
+        import wrestler from "{{ asset('../assets/js/wrestler.js') }}"
+        import head2head from "{{ asset('../assets/js/head2head.js') }}"
 
         const app = createApp({
             data() {
