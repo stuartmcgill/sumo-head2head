@@ -32,10 +32,6 @@ class RikishiServiceFacade
     public function getHead2headsForWrestler(int $id): MatchupSummary
     {
         $wrestlers = $this->getMakuuchiWrestlers();
-
-        $filename = __DIR__ . '/../../data/rikishi_' . $id  . '.json';
-
-
         $otherIds = array_map(static fn($wrestler) => $wrestler->id, $wrestlers);
 
         return $this->service->fetchMatchups($id, $otherIds);

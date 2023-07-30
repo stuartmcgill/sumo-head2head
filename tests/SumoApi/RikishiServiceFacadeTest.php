@@ -7,7 +7,10 @@ namespace App\Tests\SumoApi;
 use App\SumoApi\RikishiServiceFacade;
 use Mockery;
 use Mockery\Adapter\Phpunit\MockeryPHPUnitIntegration;
+use Mockery\MockInterface;
 use PHPUnit\Framework\TestCase;
+use StuartMcGill\SumoApiPhp\Model\Matchup;
+use StuartMcGill\SumoApiPhp\Model\MatchupSummary;
 use StuartMcGill\SumoApiPhp\Model\Rikishi;
 use StuartMcGill\SumoApiPhp\Service\RikishiService;
 
@@ -18,15 +21,10 @@ class RikishiServiceFacadeTest extends TestCase
     /** @test */
     public function getMakuuchiWrestlers(): void
     {
-        $service = Mockery::mock(RikishiService::class);
-        $service
-            ->expects('fetchDivision')
-            ->with('Makuuchi')
-            ->andReturn([
-                $this->generateRikishi('Hakuho'),
-                $this->generateRikishi('Kakuryu'),
-            ]);
-
+        $service = $this->mockServiceForGetMakuuchiWrestlers([
+            ['id' => 1, 'shikonaEn' => 'Hakuho'],
+            ['id' => 2, 'shikonaEn' => 'Kakuryu'],
+        ]);
         $facade = new RikishiServiceFacade($service);
         $wrestlers = $facade->getMakuuchiWrestlers();
 
@@ -36,29 +34,61 @@ class RikishiServiceFacadeTest extends TestCase
     /** @test */
     public function getHead2headsForWrestler(): void
     {
-        $service = Mockery::mock(RikishiService::class);
+        $matchups = [
+            new Matchup(3, 1, 1, 1),
+            new Matchup(3, 2, 2, 2),
+        ];
+
+        $service = $this->mockServiceForGetMakuuchiWrestlers([
+            ['id' => 1, 'shikonaEn' => 'Hakuho'],
+            ['id' => 2, 'shikonaEn' => 'Kakuryu'],
+        ]);
+        $service
+            ->expects('fetchMatchups')
+            ->with(3, [1, 2])
+            ->andReturn(
+                new MatchupSummary(3, $matchups)
+            );
 
         $facade = new RikishiServiceFacade($service);
-        $summary = $facade->getHead2headsForWrestler(1);
+        $summary = $facade->getHead2headsForWrestler(id: 3);
 
-        $this->assertSame(1, $summary->rikishiId);
+        $this->assertSame(expected: 3, actual: $summary->rikishiId);
+        $this->assertSame(expected: $matchups, actual: $summary->matchups);
     }
 
-    private function generateRikishi(string $shikonaEn): Rikishi
+    /** @param list<array<string, mixed>> $wrestlers */
+    private function mockServiceForGetMakuuchiWrestlers(
+        array $wrestlers
+    ): RikishiService | MockInterface {
+        $service = Mockery::mock(RikishiService::class);
+        $service
+            ->expects('fetchDivision')
+            ->with('Makuuchi')
+            ->andReturn(array_values(array_map(
+                callback: static fn(array $wrestler)
+                    => self::generateRikishi($wrestler['id'], $wrestler['shikonaEn']),
+                array: $wrestlers,
+            )));
+
+        return $service;
+    }
+
+    private static function generateRikishi(int $id, string $shikonaEn): Rikishi
     {
         return new Rikishi(
-          id: 1,
-          sumoDbId: null,
-          nskId: null,
-          shikonaEn: $shikonaEn,
-          shikonaJp: null,
-          currentRank: null,
-          heya: null,
-          birthDate: null,
-          shusshin: null,
-          height: null,
-          weight: null,
-          debut: '2023-01',
+            id: $id,
+            sumoDbId: null,
+            nskId: null,
+            shikonaEn: $shikonaEn,
+            shikonaJp: null,
+            currentRank: null,
+            heya: null,
+            birthDate: null,
+            shusshin: null,
+            height: null,
+            weight: null,
+            debut: '2023-01',
         );
     }
 }
