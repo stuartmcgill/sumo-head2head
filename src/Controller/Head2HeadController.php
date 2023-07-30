@@ -6,6 +6,7 @@ namespace App\Controller;
 
 use App\SumoApi\RikishiServiceFacade;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -24,8 +25,10 @@ class Head2HeadController extends AbstractController
     }
 
     #[Route('head2head/{id}')]
-    public function head2headsForWrestler(int $id): Response
+    public function head2headsForWrestler(int $id): JsonResponse
     {
-        return $this->rikishiService->getHead2headsForWrestler($id);
+        return new JsonResponse(
+            json_encode($this->rikishiService->getHead2headsForWrestler($id))
+        );
     }
 }

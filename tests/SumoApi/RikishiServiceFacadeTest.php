@@ -33,6 +33,17 @@ class RikishiServiceFacadeTest extends TestCase
         $this->assertCount(2, $wrestlers);
     }
 
+    /** @test */
+    public function getHead2headsForWrestler(): void
+    {
+        $service = Mockery::mock(RikishiService::class);
+
+        $facade = new RikishiServiceFacade($service);
+        $summary = $facade->getHead2headsForWrestler(1);
+
+        $this->assertSame(1, $summary->rikishiId);
+    }
+
     private function generateRikishi(string $shikonaEn): Rikishi
     {
         return new Rikishi(
