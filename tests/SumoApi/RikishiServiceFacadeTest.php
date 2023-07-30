@@ -35,8 +35,8 @@ class RikishiServiceFacadeTest extends TestCase
     public function getHead2headsForWrestler(): void
     {
         $matchups = [
-            new Matchup(3, 1, 1, 1),
-            new Matchup(3, 2, 2, 2),
+            new Matchup(rikishiId: 3, opponentId: 1, rikishiWins: 1, opponentWins: 1),
+            new Matchup(rikishiId: 3, opponentId: 2, rikishiWins: 2, opponentWins: 2),
         ];
 
         $service = $this->mockServiceForGetMakuuchiWrestlers([
@@ -47,7 +47,7 @@ class RikishiServiceFacadeTest extends TestCase
             ->expects('fetchMatchups')
             ->with(3, [1, 2])
             ->andReturn(
-                new MatchupSummary(3, $matchups)
+                new MatchupSummary(rikishiId: 3, matchups: $matchups)
             );
 
         $facade = new RikishiServiceFacade($service);

@@ -34,6 +34,6 @@ class RikishiServiceFacade
         $wrestlers = $this->getMakuuchiWrestlers();
         $otherIds = array_map(static fn($wrestler) => $wrestler->id, $wrestlers);
 
-        return $this->service->fetchMatchups($id, $otherIds);
+        return $this->service->fetchMatchups(rikishiId: $id, opponentIds: $otherIds);
     }
 }
