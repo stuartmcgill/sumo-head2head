@@ -4,6 +4,7 @@ export default class Head2HeadCollection {
     }
     sort() {
         function compareHead2Heads(a, b) {
+            // Sort by winning percentage, then wins, then name
             if (a.winningPercentage < b.winningPercentage) {
                 return 1
             }
@@ -12,7 +13,12 @@ export default class Head2HeadCollection {
             }
 
             if (a.winningPercentage !== b.winningPercentage) {
+                // One (or both) must be null
                 return a.winningPercentage === null ? 1 : -1
+            }
+
+            if (a.wins !== b.wins) {
+                return a.wins < b.wins ? 1 : -1
             }
 
             return a.shikonaEn > b.shikonaEn ? 1 : -1
