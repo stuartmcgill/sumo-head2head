@@ -48,7 +48,7 @@ export default {
       <img
         :src="imageLink"
         class="col-sm-5"
-        alt="..."
+        :alt="'Photograph of ' + selected.shikonaEn"
       >
   </div>
 </div>

@@ -10,6 +10,9 @@ export default {
     },
     watch: {
         async selectedWrestler (newVal, oldVal) {
+            // Force popovers to re-render. If we don't do this then the popovers will stay linked
+            // to the wrestler who was originally in that position. So if we re-order the cards then
+            // the popovers will all be out of sync.
             this.forceRender()
         }
     },
