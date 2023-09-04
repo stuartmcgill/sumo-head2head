@@ -96,7 +96,7 @@ export default {
                 + '<div>Weight: ' + this.head2head.weight + 'kg</div>'
 
             if (this.selectedWrestler && (this.head2head.wins + this.head2head.losses > 0)) {
-                text += '<div><a target="_blank" href="http://sumodb.sumogames.de/Rikishi_opp.aspx?r='
+                text += '<div><a target="_blank" href="https://sumodb.sumogames.de/Rikishi_opp.aspx?r='
                     + this.selectedWrestler.sumoDbId + '#' + this.head2head.sumoDbId + '">Head-to-head details</a></div>'
             }
 
