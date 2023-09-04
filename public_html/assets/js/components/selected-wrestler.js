@@ -10,14 +10,14 @@ export default {
                 return ''
             }
 
-            return 'http://sumodb.sumogames.de/Rikishi.aspx?r=' + this.selected.sumoDbId
+            return 'https://sumodb.sumogames.de/Rikishi.aspx?r=' + this.selected.sumoDbId
         },
         imageLink() {
             if (!this.selected) {
                 return ''
             }
 
-            return 'http://sumodb.sumogames.de/pics/' + this.selected.sumoDbId + '.jpg'
+            return 'https://sumodb.sumogames.de/pics/' + this.selected.sumoDbId + '.jpg'
         }
     },
     template:
