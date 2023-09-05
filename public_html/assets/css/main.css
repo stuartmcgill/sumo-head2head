@@ -11,3 +11,8 @@
 .shikona-jp {
     padding-bottom: 10px;
 }
+.selected-wrestler-image {
+    max-height: 300px;
+    height: auto;
+    width: auto;
+}

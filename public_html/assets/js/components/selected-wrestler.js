@@ -47,9 +47,7 @@ export default {
       </div>
       <img
         :src="imageLink"
-        class="col-sm-5 img-responsive" style=" max-height:300px;
-    height:auto;
-    width:auto;"
+        class="selected-wrestler-image col-sm-5 img-responsive"
         :alt="'Photograph of ' + selected.shikonaEn"
       >
   </div>
