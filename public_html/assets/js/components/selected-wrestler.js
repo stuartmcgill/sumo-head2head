@@ -30,24 +30,26 @@ export default {
             <div class="shikona-jp">{{ selected.shikonaJp }}</div>
             
             <dl class="row">
-                <dt class="col-sm-3">Rank</dt>
-                <dd class="col-sm-9">{{ selected.currentRank }}</dd>
+                <dt class="col-sm-4">Rank</dt>
+                <dd class="col-sm-8">{{ selected.currentRank }}</dd>
                 
-                <dt class="col-sm-3">Stable</dt>
-                <dd class="col-sm-9">{{ selected.heya }}</dd>
+                <dt class="col-sm-4">Stable</dt>
+                <dd class="col-sm-8">{{ selected.heya }}</dd>
                 
-                <dt class="col-sm-3">Height</dt>
-                <dd class="col-sm-9">{{ selected.height }}cm</dd>
+                <dt class="col-sm-4">Height</dt>
+                <dd class="col-sm-8">{{ selected.height }}cm</dd>
                 
-                <dt class="col-sm-3">Weight</dt>
-                <dd class="col-sm-9">{{ selected.weight }}kg</dd>
+                <dt class="col-sm-4">Weight</dt>
+                <dd class="col-sm-8">{{ selected.weight }}kg</dd>
             </dl>
         </p>
         <a :href="recordLink" class="btn btn-primary">Full record</a>
       </div>
       <img
         :src="imageLink"
-        class="col-sm-5"
+        class="col-sm-5 img-responsive" style=" max-height:300px;
+    height:auto;
+    width:auto;"
         :alt="'Photograph of ' + selected.shikonaEn"
       >
   </div>

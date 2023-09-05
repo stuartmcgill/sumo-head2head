@@ -11,14 +11,14 @@
         {% verbatim %}
         <div id="app">
             <div class="row">
-                <div class="col-sm-6 mb-3 mb-sm-0">
+                <div class="col mb-3 mb-sm-0">
                     <selected-wrestler :selected="selected"></selected-wrestler>
                 </div>
                 <div v-show="loading" class="spinner-border m-3" role="status">
                     <span class="sr-only"></span>
                 </div>
             </div>
-            <div class="row">
+            <div class="row m-3">
                 <head2head v-for="head2head in wrestlers.head2heads"
                     @selected="onHead2HeadSelected"
                     :head2head="head2head"
