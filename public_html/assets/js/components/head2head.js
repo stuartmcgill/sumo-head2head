@@ -105,11 +105,11 @@ export default {
     },
     template:
         `
-<div class="card col-sm-2 m-1" :class="borderClass" v-show="isVisible">
+<div class="card col-md-4 col-lg-3 col-xl-2 m-1" :class="borderClass" v-show="isVisible">
     <h5 class="card-header">{{ head2head.shikonaEn }}</h5>
-    <div class="card-body" :class="textClass">
+    <div class="card-body p-1" :class="textClass">
         <h3 class="card-title">{{ record }}<div class="winning-percentage">{{ percentage }}</div></h3>
-        <a href="#" @click="$emit('selected', head2head.id)" class="btn btn-outline-primary">Select</a>
+        <a href="#" @click="$emit('selected', head2head.id)" class="btn btn-outline-primary m-1">Select</a>
         <a
             v-if="renderPopover"
             tabindex="0"
