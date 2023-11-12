@@ -9,7 +9,16 @@ division.
 
 - Download this respository
 - `composer install`
-- ` php -S localhost:8080 -t public public/index.php`
+
+<<<<<<< Updated upstream
+To serve the website (e.g. with Vagrant):
+- `php -S 0.0.0.0:8080 -t public_html public_html/index.php`
+
+Browse to http://localhost:8080/head2head.
+=======
+Start the server (e.g. for Vagrant):
+- `php -S 0.0.0.0:8080 -t public_html public_html/index.php`
+>>>>>>> Stashed changes
 
 # Dependencies
 
